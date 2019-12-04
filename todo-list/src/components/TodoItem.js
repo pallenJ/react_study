@@ -3,9 +3,10 @@ import './TodoItem.css';
 
 class TodoItem extends Component {
   render() {
-    const { text, checked, id, onToggle, onRemove } = this.props;
+    const { text, checked, id, onToggle, onRemove,todos } = this.props;
 
     return (
+
       <div className="todo-item" onClick={() => onToggle(id)}>
         <div className="remove" onClick={(e) => {
           e.stopPropagation(); // onToggle 이 실행되지 않도록 함
@@ -14,6 +15,7 @@ class TodoItem extends Component {
         <div className={`todo-text ${checked && 'checked'}`}>
           <div>{text}</div>
         </div>
+        {todos}
         {
           checked && (<div className="check-mark">✓</div>)
         }
