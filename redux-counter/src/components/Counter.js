@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Counter.css';
 
 export const Counter = ({number,color,onIncrement,onDecrement,onSetColor}) => {//현재숫자, 색깔, 증가/감소이벤트, 색깔 지정
+   // alert(color)
     return (
         <div
         className = "Counter"
@@ -36,3 +37,4 @@ Counter.defaultProps = {
     onDecrement : () =>console.warn('onDecreament not defined'),
     onSetColor  : () =>console.warn('onSetColor not defined')
 }
+export default Counter;

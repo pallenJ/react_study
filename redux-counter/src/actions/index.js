@@ -13,6 +13,7 @@ export const decrement = () => ({
 });
 
 export const setColor  = (color) => ({
-    type : types.SET_COLOR
+    type : types.SET_COLOR,
+    color : color
 });//유일하게 파라미터를 가짐. 변경할 색상을 받아야하기 때문.
 

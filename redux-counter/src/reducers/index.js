@@ -24,13 +24,13 @@ function counter(state = initialState, action) {
                 ...state,
                 number: state.number+1
             };
-        case types.INCREMENT:
+        case types.DECREMENT:
             
             return{
                 ...state,
                 number: state.number-1
             };
-        case types.INCREMENT:
+        case types.SET_COLOR:
             
             return{
                 ...state,
