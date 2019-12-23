@@ -7,15 +7,27 @@
     기존 상태 값에 원하는 값을 덮어쓴 새로운 객체를 만들어서 반환해야함
 */
 
-import * as types from '../actions/ActionTypes';
+import number from './number';
+import color from './color';
+
+import { combineReducers } from 'redux';
+
+const reducers = combineReducers({
+    numberData : number,
+    colorData  : color
+})
+
+export default reducers;
 
 // 초기 상태를 정의
+/*
 const initialState = {
     color: 'black',
     number: 0
 };
+*/
 //  초기상태로 정의 되는건 color 과 number
-
+/*
 function counter(state = initialState, action) {
     switch (action.type) {
         case types.INCREMENT:
@@ -42,3 +54,4 @@ function counter(state = initialState, action) {
     }
 }
 export default counter;
+*/
