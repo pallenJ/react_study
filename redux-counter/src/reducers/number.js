@@ -6,7 +6,7 @@ const initialState = {
 
 
 const number = (state = initialState, action) => {
-    switch (action.types) {
+    switch (action.type) {
         case types.INCREMENT:
             return {
                 number : state.number+1

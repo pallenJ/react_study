@@ -13,45 +13,8 @@ import color from './color';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
-    numberData : number,
-    colorData  : color
-})
+    numberData: number,
+    colorData: color
+});
 
 export default reducers;
-
-// 초기 상태를 정의
-/*
-const initialState = {
-    color: 'black',
-    number: 0
-};
-*/
-//  초기상태로 정의 되는건 color 과 number
-/*
-function counter(state = initialState, action) {
-    switch (action.type) {
-        case types.INCREMENT:
-            
-            return{
-                ...state,
-                number: state.number+1
-            };
-        case types.DECREMENT:
-            
-            return{
-                ...state,
-                number: state.number-1
-            };
-        case types.SET_COLOR:
-            
-            return{
-                ...state,
-                color: action.color
-            };
-    
-        default:
-            return state;
-    }
-}
-export default counter;
-*/
