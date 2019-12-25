@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
+import Buttons from '../components/Buttons';
+import CounterListContainer from './CounterListContainer';
 
- class App extends Component {
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
+import { getRandomColor } from '../utils';
+
+class App extends Component {
     render() {
+        const { onCreate, onRemove } = this.props;
         return (
-            <div>
-
+            <div className="App">
+                <Buttons
+                    onCreate={onCreate}
+                    onRemove={onRemove}
+                />
+                <CounterListContainer/>
             </div>
-        )
+        );
     }
 }
 
