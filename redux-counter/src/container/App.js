@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 import Buttons from '../components/Buttons';
 import CounterListContainer from './CounterListContainer';
 
@@ -28,9 +28,5 @@ const mapToDispatch = (dispatch) => ({
     onRemove: (index) => dispatch(actions.remove(index))
 });
 
-// 리덕스에 연결을 시키고 내보냄
-/* 
-이 컴포넌트에선 store에서 필요한 값이 없으니 mapStateToProps 는 null로 설정, 
-버튼을 위한 mapDispatchToProps 를 만들 예정.
-*/
+// 리덕스에 연결을 시키고 내보낸다
 export default connect(null, mapToDispatch)(App);

@@ -6,27 +6,29 @@ import * as types from './ActionTypes';
 */
 
 
-export const create = () => ({
-    type : types.CREATE
+export const create = (color) => ({
+    type: types.CREATE,
+    color
 });
 
 export const remove = () => ({
-    type : types.REMOVE
+    type: types.REMOVE
 });
+
 //기존의 함수에 index추가. 어느 component의 이벤트인지 알기위함.
+
 export const increment = (index) => ({
-    type : types.INCREMENT,
+    type: types.INCREMENT,
     index
 });
 
 export const decrement = (index) => ({
-    type : types.DECREMENT,
+    type: types.DECREMENT,
     index
 });
 
-export const setColor  = (index,color) => ({
-    type : types.SET_COLOR,
+export const setColor = ({index, color}) => ({
+    type: types.SET_COLOR,
     index,
-    color : color
+    color
 });
- 
