@@ -7,7 +7,7 @@ import './CounterList.css';
 const CounterList = ({counters, onIncrement, onDecrement, onSetColor}) => {
 
     const counterList = counters.map(
-        (counter, i) => {
+        (counter, i) => (
         <Counter 
         key = {i}
         index = {i}
@@ -16,13 +16,13 @@ const CounterList = ({counters, onIncrement, onDecrement, onSetColor}) => {
         onDecrement = {onDecrement}
         onSetColor  = {onSetColor}
         />
-    });
+    ));
     
     return (
         <div className = "CounterList"> 
             {counterList}
         </div>
-    )
+    );
 }
 
 CounterList.propTypes = {

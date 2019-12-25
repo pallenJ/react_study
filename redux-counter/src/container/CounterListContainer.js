@@ -3,6 +3,7 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 import { getRandomColor } from '../utils';
 
+
 // store 안의 state 값을 props 로 연결
 const mapStateToProps = (state) =>({
     counters: state.counters
