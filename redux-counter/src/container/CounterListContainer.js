@@ -20,12 +20,11 @@ const mapDispatchToProps = (dispatch) => ({
     }
 })
 
-const CounterListContainer = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+// 데이터와 함수들이 props 로 붙은 컴포넌트 생성
+const CounterListContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CounterList);
+
 
 export default CounterListContainer
