@@ -1,20 +1,41 @@
 //  리듀서:= 액션의 type에 따라 변화를 일으키는 함수
-/*
-    리듀서는 state 와 action 을 파라미터로 받으며
-    state 가 undefined 일때 (스토어가 생성될때) state 의 기본값을 initialState 로 사용
-    action.type 에 따라 다른 작업을 하고, 새 상태를 만들어서 반환
-    이 때 주의 할 점은 state 를 직접 수정하면 안되고,
-    기존 상태 값에 원하는 값을 덮어쓴 새로운 객체를 만들어서 반환해야함
-*/
+import * as types from '../actions/ActionTypes'
 
-import number from './number';
-import color from './color';
+const initialState = {
+    counters: [
+        {
+            color:'black',
+            number : 0 
+        }
+    ]
+}
 
-import { combineReducers } from 'redux';
+//리듀스 함수 정의
+function counter(state = initialState, action) {
+    //레퍼런스 생성
+    const {counters} = state;
 
-const reducers = combineReducers({
-    numberData: number,
-    colorData: color
-});
+    switch (action.type) {
+        case types.CREATE:
+            
+            return{
+                counters :[
+                    ...counters,{
+                        color : action.color,
+                        number : 0
+                    }
+                ]
+            };
+        case types.REMOVE:
+            
+            return{
+                counters : counters.slice(0,counters.length-1)//const로 생성했으므로 
+            };
+    
+        default:
+            return state;
+    }
 
-export default reducers;
+}
+
+export default counter;
