@@ -29,4 +29,6 @@ const mapToDispatch = (dispatch) => ({
 });
 
 // 리덕스에 연결을 시키고 내보낸다
+// store에서 필요한 값이 없으니 mapStateToProps 는 null 로 설정
+// mapToDispatch 는 버튼을 위한것
 export default connect(null, mapToDispatch)(App);

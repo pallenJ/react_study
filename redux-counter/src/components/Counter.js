@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Counter.css';
 
+//CounterList 에서 전달한 index 를 각 이벤트가 실행 될 때 함수의 파라미터로 넣어서 실행
 const Counter = ({number, color, index, onIncrement, onDecrement, onSetColor}) => {
     return (
         <div 

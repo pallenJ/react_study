@@ -9,6 +9,18 @@ const initialState = {
         }
     ]
 }
+/*
+상태안에 counters라는 배열을 선언하고 거기에 color , number값을 지닌 객체를 만들어 넣어줌
+*/
+
+
+/*
+
+컴포넌트의 state 안에있는 배열을 다룰때와 동일하게, 기존 배열에 직접 push() 혹은 pop() 을 하면 안됨.
+... (spread 문법)을 사용하거나, .slice() 함수를 사용하여 배열을 잘라 새로 생성을 해야 함.
+
+이 과정에서, state.counters 를 자주 사용해야하므로, 이를 줄여서 사용하여 코드를 줄이기 위해 상단에 레퍼런스를 만들어서 사용(코드가 더 깔끔해짐.)
+*/
 
 // 리듀서 함수를 정의. 
 function counter(state = initialState, action) {
@@ -75,5 +87,7 @@ function counter(state = initialState, action) {
             return state;
     }
 };
+
+
 
 export default counter;
