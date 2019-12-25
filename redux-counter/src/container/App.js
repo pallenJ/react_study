@@ -22,4 +22,15 @@ class App extends Component {
     }
 }
 
-export default App;
+// 액션함수 준비
+const mapToDispatch = (dispatch) => ({
+    onCreate: () => dispatch(actions.create(getRandomColor())),
+    onRemove: (index) => dispatch(actions.remove(index))
+});
+
+// 리덕스에 연결을 시키고 내보냄
+/* 
+이 컴포넌트에선 store에서 필요한 값이 없으니 mapStateToProps 는 null로 설정, 
+버튼을 위한 mapDispatchToProps 를 만들 예정.
+*/
+export default connect(null, mapToDispatch)(App);
