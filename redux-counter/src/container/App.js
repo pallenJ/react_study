@@ -10,7 +10,7 @@ import { getRandomColor } from '../utils';
 class App extends Component {
     render() {
         const { onCreate, onRemove } = this.props;
-        return (5
+        return (
             <div className="App">
                 <Buttons
                     onCreate={onCreate}

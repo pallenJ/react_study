@@ -1,15 +1,15 @@
 import * as types from '../actions/ActionTypes';
-import { List, Map } from 'immutable';
+import { Map, List } from 'immutable';
 
 // 초기 상태를 정의.
-const initialState = {
+const initialState = Map({
     counters: List([
         Map({
             color: 'black',
             number: 0
         })
     ])
-}
+})
 /*
 상태안에 counters라는 배열을 선언하고 거기에 color , number값을 지닌 객체를 만들어 넣어줌
 */
@@ -26,7 +26,7 @@ const initialState = {
 // 리듀서 함수를 정의. 
 function counter(state = initialState, action) {
     // 레퍼런스 생성
-    const { counters } = state;
+    const counters = state.get('counters');
 
     switch(action.type) {
         // 카운터 새로 추가
