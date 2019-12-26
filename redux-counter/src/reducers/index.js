@@ -1,13 +1,14 @@
 import * as types from '../actions/ActionTypes';
+import { List, Map } from 'immutable';
 
 // 초기 상태를 정의.
 const initialState = {
-    counters: [
-        {
+    counters: List([
+        Map({
             color: 'black',
             number: 0
-        }
-    ]
+        })
+    ])
 }
 /*
 상태안에 counters라는 배열을 선언하고 거기에 color , number값을 지닌 객체를 만들어 넣어줌
@@ -30,59 +31,36 @@ function counter(state = initialState, action) {
     switch(action.type) {
         // 카운터 새로 추가
         case types.CREATE:
-            return {
-                counters: [
-                    ...counters,
-                    {
-                        color: action.color,
-                        number: 0
-                    }
-                ]
-            };
+            return state.set('counters', counters.push(Map({
+                color: action.color,
+                number: 0
+            }))
+            );
         // slice 를 이용, 맨 마지막 카운터를 제외
         case types.REMOVE:
-            return {
-                counters: counters.slice(0, counters.length - 1)
-            };
+            return state.set('counters',counters.pop());
 
         // action.index 번째 카운터의 number 1 증가
         case types.INCREMENT:
-            return {
-                counters: [
-                    ...counters.slice(0, action.index),
-                    {
-                        ...counters[action.index],
-                        number: counters[action.index].number + 1
-                    },
-                    ...counters.slice(action.index + 1, counters.length)
-                ]
-            };
+            return state.set('counters', counters.update(
+                action.index,
+                (counter)=> counter.set('number',counter.get('number')+1))
+            );
 
         // action.index 번째 카운터의 number 1 감소
         case types.DECREMENT:
-            return {
-                counters: [
-                    ...counters.slice(0, action.index),
-                    {
-                        ...counters[action.index],
-                        number: counters[action.index].number - 1
-                    },
-                    ...counters.slice(action.index + 1, counters.length)
-                ]
-            };
+            return state.set('counters', counters.update(
+                action.index,
+                (counter)=> counter.set('number',counter.get('number')-1))
+            );
 
         // action.index 번째 카운터의 컬러 변경
         case types.SET_COLOR:
-            return {
-                counters: [
-                    ...counters.slice(0, action.index),
-                    {
-                        ...counters[action.index],
-                        color: action.color
-                    },
-                    ...counters.slice(action.index + 1, counters.length)
-                ]
-            };
+            return state.set('counters', counters.update(
+                action.index,
+                (counter)=> counter.set('color',action.color))
+            );
+
         default:
             return state;
     }
