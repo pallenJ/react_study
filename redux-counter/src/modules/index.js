@@ -25,3 +25,14 @@ const initialState = Map({
         })
     ])
 })
+
+//액션타입에 접두사가 들어가 있으므로 그냥 CREATE:를 쓰면 안되고, [CREATE]:로 해야함.
+
+export default handleActions({
+    [CREATE]:   (state,action)=>{return state;},    
+    [REMOVE]:   (state,action)=>{return state;},
+    [INCREMENT]:(state,action)=>{return state;},
+    [DECREMENT]:(state,action)=>{return state;},
+    [SET_COLOR]:(state,action)=>{return state;},
+    },initialState
+)
