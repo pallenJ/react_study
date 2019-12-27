@@ -1,4 +1,4 @@
-import { createAction, handleAction } from "redux-actions";
+import { createAction, handleActions } from "redux-actions";
 import { Map, List } from "immutable";
 
 //액션타입
@@ -58,9 +58,10 @@ export default handleActions({
     },
     [SET_COLOR]:(state,action)=>{
         const counters = state.get('counters');
-        return state.set('counter', counters.update(
+        return state.set('counters', counters.update(
             action.payload.index,
-            (counter) => counter.set('color',action.payload.color)
+            (counter) => 
+                counter.set('color',action.payload.color)
         ));
     },
     },initialState
