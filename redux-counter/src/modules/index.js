@@ -27,12 +27,41 @@ const initialState = Map({
 })
 
 //액션타입에 접두사가 들어가 있으므로 그냥 CREATE:를 쓰면 안되고, [CREATE]:로 해야함.
-
+//또한 스위치를 사용하지 않으므로 각 함수마다 카운터 필요
 export default handleActions({
-    [CREATE]:   (state,action)=>{return state;},    
-    [REMOVE]:   (state,action)=>{return state;},
-    [INCREMENT]:(state,action)=>{return state;},
-    [DECREMENT]:(state,action)=>{return state;},
-    [SET_COLOR]:(state,action)=>{return state;},
+    [CREATE]:   (state,action)=>{
+        const counters = state.get('counters');
+        return state.set('counters', counters.push(
+            Map({
+                color : action.payload,
+                number: 0
+            })
+        ));
+    },    
+    [REMOVE]:   (state,action)=>{
+        const counters = state.get('counters');
+        return state.set('counters',counters.pop());
+    },
+    [INCREMENT]:(state,action)=>{
+        const counters = state.get('counters'); 
+        return state.set('counters',counters.update(
+            action.payload,
+            (counter)=>counter.set('number',counter.get('number')+1)
+        ));
+    },
+    [DECREMENT]:(state,action)=>{
+        const counters = state.get('counters');
+        return state.set('counters',counters.update(
+            action.payload,
+            (counter)=>counter.set('number',counter.get('number')-1)
+        ));
+    },
+    [SET_COLOR]:(state,action)=>{
+        const counters = state.get('counters');
+        return state.set('counter', counters.update(
+            action.payload.index,
+            (counter) => counter.set('color',action.payload.color)
+        ));
+    },
     },initialState
 )
